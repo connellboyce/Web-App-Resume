@@ -10,11 +10,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.aldwindelgado.github</groupId>
-    <artifactId>spring-aws-sns-publisher</artifactId>
+    <groupId>com.connellboyce</groupId>
+    <artifactId>webportfolio</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-aws-sns-publisher</name>
-    <description>Spring Boot 2 example of Spring AWS SNS publisher implementation</description>
+    <name>webportfolio</name>
+    <description>Personal website using a web app</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
