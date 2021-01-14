@@ -10,4 +10,4 @@ cloud:
 
 app:
     sns:
-        topic: aws-sns-topic-sample
+        topic: Connell-Portfolio-Topic

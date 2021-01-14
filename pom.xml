@@ -14,7 +14,7 @@
     <artifactId>webportfolio</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>webportfolio</name>
-    <description>Personal website using a web app</description>
+    <description>Web-App for a portfolio, resume, and website</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -50,6 +50,11 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
     </dependencies>
 
