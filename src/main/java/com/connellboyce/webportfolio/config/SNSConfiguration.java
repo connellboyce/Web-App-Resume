@@ -6,6 +6,8 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sns.AmazonSNSAsync;
 import com.amazonaws.services.sns.AmazonSNSAsyncClientBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.aws.messaging.core.NotificationMessagingTemplate;
 import org.springframework.context.annotation.Bean;
@@ -16,15 +18,20 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class SNSConfiguration {
+    Logger logger = LoggerFactory.getLogger(SNSConfiguration.class);
 
-    @Value("${app.secret.accessKey}")
+    @Value("${aws.secret.accessKey:notset}")
     private String accessKey;
 
-    @Value("${app.secret.secretKey}")
+    @Value("${aws.secret.secretKey:notset}")
     private String secretKey;
+
+    @Value("${aws.default.region:us-east-1}")
+    private String defaultRegion;
 
     @Bean(name = "amazonSNS", destroyMethod = "shutdown")
     public AmazonSNSAsync amazonSNSAsync() {
+        logger.info("Creating Amazon SNS client in region={}",defaultRegion);
         return AmazonSNSAsyncClientBuilder
             .standard()
             .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey,secretKey)))
