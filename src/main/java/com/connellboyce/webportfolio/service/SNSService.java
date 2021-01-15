@@ -3,10 +3,13 @@ package com.connellboyce.webportfolio.service;
 import com.amazonaws.services.sns.AmazonSNSAsync;
 import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sns.model.SubscribeRequest;
+import com.connellboyce.webportfolio.payload.request.EmailRequest;
+import com.connellboyce.webportfolio.payload.response.MessageResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,10 +31,21 @@ public class SNSService implements PubSubService {
     }
 
     @Override
-    public String publish() {
+    public ResponseEntity<?> publish(EmailRequest emailRequest) {
         logger.info("Attempting to publish message.");
-        PublishRequest publishRequest = new PublishRequest(TOPIC_ARN,"test message","Notification: Amazon SNS");
+        String emailSubject = emailRequest.getEmailSubject();
+        String returnEmail = emailRequest.getReturnEmail();
+        String content = emailRequest.getContent();
+        String message = "Message From: " + returnEmail + "\n" + content;
+        PublishRequest publishRequest = new PublishRequest(TOPIC_ARN,message,emailSubject);
         amazonSNSClient.publish(publishRequest);
-        return "Notification published.";
+
+        if ("".equals(content) ||  "".equals(returnEmail)) {
+            logger.error("Email is missing body or return address.");
+            return ResponseEntity.badRequest().build();
+        }
+
+        logger.info("Successfully sent email");
+        return ResponseEntity.ok(new MessageResponse("Email successfully sent!"));
     }
 }

@@ -1,0 +1,12 @@
+body {
+    background-color: #add8e6;
+}
+
+.main {
+    width: 58%;
+    margin-right: 21%;
+    margin-left: 21%;
+}
+.form_wrapper {
+    border: groove cornflowerblue;
+}
