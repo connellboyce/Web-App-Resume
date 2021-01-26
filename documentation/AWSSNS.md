@@ -6,16 +6,16 @@
 
 ### Setting up SNS in the AWS Console
 - Get started with SNS through the [Amazon Console](https://aws.amazon.com/sns).
-![image](images/get-started.png)
+![image](../src/main/resources/static/image/get-started.png)
 
 - Begin the creation of the notification topic by naming it.
-![image](images/name-topic.png)
+![image](../src/main/resources/static/image/name-topic.png)
 
 - Fill in other fields and officially create the topic.
-![image](images/create-topic.png)
+![image](../src/main/resources/static/image/create-topic.png)
 
 - Once the topic is set up, subscriptions are possible. There is a choice of several notification protocol such as e-mail and SMS. Be sure to select the correct ARN for the topic that was just created.
-![image](images/create-subscription.png)
+![image](../src/main/resources/static/image/create-subscription.png)
 
 - With this, SNS is set up and functional. It is now able to be connected to an application or service.
 
@@ -23,11 +23,11 @@
 ### Incorporating SNS into a Project
 - Firstly, several identifiers must be collected: the topic ARN and the AWS account's access and security keys.
 - Collecting the ARN is as simple as visiting your topic and copying the ARN.
-![image](images/find-arn.png)
+![image](../src/main/resources/static/image/find-arn.png)
 - Next navigate to your account on the nav-bar and select "My Security Credentials".
-![image](images/security-credentials.png)
+![image](../src/main/resources/static/image/security-credentials.png)
 - Once in the credentials page, generate new access credentials. DO NOT share this with anyone as it allows full access to the associated AWS account. Collect both the access key and security key from this location.
-![image](images/create-key.png)
+![image](../src/main/resources/static/image/create-key.png)
 - With the ARN, security key, and access key, it is now possible to access SNS through an app. This will be demonstrated with Spring Boot and the following dependency:
   - Note: As of 1/14/2020 there are compatibility issues between newer versions of Spring Boot and this dependency. For this reason, it may be necessary to use older versions of Spring Boot.
 ```

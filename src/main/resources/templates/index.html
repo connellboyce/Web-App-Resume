@@ -1,13 +1,13 @@
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Connell Boyce</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/webportfolio.js}"></script>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
             <span class="navbar-brand">Connell Boyce's Portfolio</span>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -34,5 +34,18 @@
             </div>
         </div>
     </nav>
+
+    <br>
+    <div class="index-main">
+        <p>
+            <img th:src="@{/images/headshot_cropped.jpg}" class="profile"/><h1>Welcome!</h1>
+            <div class="index-body">
+                <p>test</p>
+                <p>test</p>
+
+            </div>
+        </p>
+    </div>
+
 </body>
 </html>
